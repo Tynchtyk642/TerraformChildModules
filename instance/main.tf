@@ -13,6 +13,7 @@
 
   variable "use_bastion" {
   default = true
+  description = "variable is used to control whether the aws_instance resource is created or not. "
 }
 
 resource "aws_instance" "bastion" {
