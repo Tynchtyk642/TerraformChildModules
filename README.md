@@ -3,11 +3,6 @@
 # *Terraform AWS EKS, EC2 Instance, and VPC Modules
 ## This module deploys an Amazon EKS cluster, EC2 instances, and a VPC using Terraform.
 
-## Requirements
-# *This module requires Terraform 0.12 or later and the following Terraform providers:
-
-## AWS Provider v2.0 or later
-## Terraform EKS Provider v0.1 or later
 ## Variables
 # This module takes the following variables as input:
 
@@ -54,8 +49,6 @@
 ```
 # Then run terraform init and terraform apply to deploy the VPC, EC2 instances, and Amazon EKS cluster.
 
-## Limitations
-# This module is currently only supported in the us-west-2 region.
 
 ## License
 # This module is licensed under the Apache 2.0 License. Please review the LICENSE file for more information.
