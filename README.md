@@ -1,6 +1,6 @@
 
 
-# *Terraform AWS EKS, EC2 Instance, and VPC Deployment
+# *Terraform AWS EKS, EC2 Instance, and VPC Modules
 ## This module deploys an Amazon EKS cluster, EC2 instances, and a VPC using Terraform.
 
 ## Requirements
@@ -27,16 +27,31 @@
 ## Usage
 # To use this module, add the following code to your Terraform configuration:
 
-## hcl
-Copy code
-## module "eks_cluster" {
-  - *source = "github.com/your-repository-url.git"*
+```terraform
+ module "eks_cluster" {
+  source = "git::<URL_OF_THIS_REPO>//eks_cluster?ref=main"
 
-  - *vpc_cidr         = "10.0.0.0/16"*
-  - *public_subnet_cidr = "10.0.1.0/24"*
-  - *private_subnet_cidr = "10.0.2.0/24"*
-  - *cluster_name     = "my-eks-cluster"*
+  env         = <env_name>
+  vpc_id      = <vpc_id>
+  eks_name    = "test1"
+  eks_version = "1.20"
+  subnets     = <list of Private Subnets>
+  vpn_cidr    = <CIDR Block list of Public Subnets>
+  region      = "us-east-1"
+
+  node_groups = {
+    first = {
+      node_group_name = "test"
+      desired_size    = 3
+      max_size        = 4
+      min_size        = 2
+
+      ami_type       = "AL2_x86_64"
+      instance_types = ["t2.medium"]
+    },
+  }
 }
+```
 # Then run terraform init and terraform apply to deploy the VPC, EC2 instances, and Amazon EKS cluster.
 
 ## Limitations
