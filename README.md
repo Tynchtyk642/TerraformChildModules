@@ -18,6 +18,6 @@
 ### Finally, you can run the following command to apply the changes and create the infrastructure:
 
 
-###terraform apply
+### terraform apply
 
 # Made by Nuriza
