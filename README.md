@@ -108,7 +108,7 @@
 | <a name="input_env"></a> [env](#input\_env) | System environment name | `string` | `""` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | (Optional) Instance type to use for the instance. | `string` | `"t2.micro"` | no |
 | <a name="input_public_subnet_ids"></a> [public\_subnet\_ids](#input\_public\_subnet\_ids) | shows subnets ids | `string` | `""` | no |
-| <a name="input_use_bastion"></a> [use\_bastion](#input\_use\_bastion) | n/a | `bool` | `true` | no |
+| <a name="input_use_bastion"></a> [use\_bastion](#input\_use\_bastion) |variable is used to control whether the aws_instance resource is created or not.  | `bool` | `true` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID of the specific VPC to retrieve | `string` | `""` | no |
 
 
