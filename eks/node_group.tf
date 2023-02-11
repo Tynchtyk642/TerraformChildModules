@@ -10,7 +10,6 @@ resource "aws_launch_template" "eks_worker_nodes_template" {
   user_data = base64encode(templatefile("${path.module}/user_data.tpl", {
     cluster_name = aws_eks_cluster.cluster.name
   }))
-  vpc_security_group_ids = [aws_security_group.worker_group_mgmt.id]
   block_device_mappings {
     device_name = "/dev/sda1"
 
