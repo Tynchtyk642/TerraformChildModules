@@ -20,9 +20,6 @@ resource "aws_eks_cluster" "cluster" {
 
   lifecycle {
     create_before_destroy = false
-    # ignore_changes = [
-    #   vpc_config
-    # ]
   }
   tags = {
     Name = "${var.cluster_name}"
@@ -38,59 +35,17 @@ resource "aws_security_group" "cluster" {
     for_each = var.egress
     content {
       description = egress.value["description"]
-      from_port = egress.value["from_port"]
-      to_port = egress.value["to_port"]
-      protocol = egress.value["protocol"]
+      from_port   = egress.value["from_port"]
+      to_port     = egress.value["to_port"]
+      protocol    = egress.value["protocol"]
       cidr_blocks = egress.value["cidr_blocks"]
     }
   }
-  
+
   tags = {
     Name = "SG-${var.cluster_name}"
   }
 }
-
-# resource "aws_security_group_rule" "cluster_egress_internet" {
-#   description       = "Allow cluster egress access to the Internet."
-#   protocol          = "-1"
-#   security_group_id = aws_security_group.cluster.id
-#   cidr_blocks       = ["0.0.0.0/0"]
-#   from_port         = 0
-#   to_port           = 0
-#   type              = "egress"
-# }
-
-# resource "aws_security_group_rule" "cluster_egress" {
-#   description       = "Allow cluster ingress"
-#   protocol          = "-1"
-#   security_group_id = aws_security_group.cluster.id
-#   cidr_blocks       = ["0.0.0.0/0"]
-#   from_port         = 0
-#   to_port           = 0
-#   type              = "ingress"
-# }
-
-
-
-# resource "aws_security_group_rule" "node_ingress" {
-#   description       = "Allow ingress"
-#   protocol          = "-1"
-#   security_group_id = aws_security_group.worker_group_mgmt.id
-#   cidr_blocks       = ["0.0.0.0/0"]
-#   from_port         = 0
-#   to_port           = 0
-#   type              = "ingress"
-# }
-
-# resource "aws_security_group_rule" "node_egress_internet" {
-#   description       = "Allow node eress"
-#   protocol          = "-1"
-#   security_group_id = aws_security_group.worker_group_mgmt.id
-#   cidr_blocks       = ["0.0.0.0/0"]
-#   from_port         = 0
-#   to_port           = 0
-#   type              = "egress"
-# }
 
 
 resource "aws_iam_role" "cluster" {

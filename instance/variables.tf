@@ -1,26 +1,27 @@
 variable "prefix" {
-  type = string
-  default = "your_prefix"
+  description = "Defines prefix for all resources"
+  type        = string
+  default     = "your_prefix"
 }
 variable "ami" {
-  type = string
+  type        = string
   description = "Variable defines the ami of instance, region dependent"
 }
 
 variable "subnet_id" {
-  type = string
+  type        = string
   description = "Variable defines the subnet of instance"
 }
 
 variable "sg_vpc_id" {
-  type = string
-description = "Variable defines the vpc of sg"
+  type        = string
+  description = "Variable defines the vpc of sg"
 }
 
 variable "key_name" {
-    description = "Variable defines the key name of instance"
-  type = string
-  default = "mykey"
+  description = "Variable defines the key name of instance"
+  type        = string
+  default     = "mykey"
 }
 
 # variable "pub_key" {
@@ -28,8 +29,8 @@ variable "key_name" {
 # }
 
 variable "instance_type" {
-  type = string
-  default = "t2.micro"
+  type        = string
+  default     = "t2.micro"
   description = "Variable defines the instance_type of instance(t2.micro, t2.large...)"
 }
 
@@ -74,8 +75,3 @@ variable "egress" {
   }]
 }
 
-# variable "instance_sg" {
-#   type = string
-#   description = "Variable defines the security group id of instance to be attached"
-
-# }

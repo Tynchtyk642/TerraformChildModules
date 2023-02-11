@@ -1,5 +1,6 @@
 variable "node_groups" {
-  type = map(map(number))
+  description = "Variables defines scaling config values"
+  type        = map(map(number))
 
   default = {
     node_group = {
@@ -14,7 +15,7 @@ variable "node_groups" {
 
 variable "ingress" {
 
-  description = "sg ingress rules"
+  description = "Variable defines sg ingress rules"
   type = list(object({
     description = string
     from_port   = number
@@ -34,7 +35,7 @@ variable "ingress" {
 
 variable "egress" {
 
-  description = "sg egress rules"
+  description = "Varaible defines sg egress rules"
   type = list(object({
     description = string
     from_port   = number
@@ -72,7 +73,8 @@ variable "cluster_version" {
 }
 
 variable "subnet_ids" {
-  type = list(string)
+  description = "Variables defines subnet id of eks"
+  type        = list(string)
 }
 
 
@@ -89,8 +91,8 @@ variable "instance_type" {
 }
 
 variable "key_name" {
-  type = string
+  description = "key name for instances, for accessing (ssh and etc...)"
+  type        = string
 }
 
 
-# variable "bastion_cidr" {}

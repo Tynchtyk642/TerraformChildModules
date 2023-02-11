@@ -1,47 +1,41 @@
 variable "prefix" {
-  type = string
-  default = "ant-tech"
+  type        = string
+  default     = "ant-tech"
   description = "prefix for all resources"
 }
 
 
 variable "vpc_cidr_block" {
-  type = string
+  type        = string
   description = "The CIDR block specifying the IP range for the subnet."
 }
 
 
 
 variable "public_subnets" {
-  type = number
+  type        = number
   description = "Variable defines count of public subnets"
-default = 2
+  default     = 2
 }
 
 variable "public_cidrs" {
-  type = list(string)
+  type        = list(string)
   description = "Variable defines cidr range for public subnets"
 }
 
 variable "private_subnets" {
-  type = number
+  type        = number
   description = "Variable defines count of private subnets"
-  default = 2
+  default     = 2
 }
 
 variable "private_cidrs" {
-  type = list(string)
+  type        = list(string)
   description = "Variable defines cidr range for private subnets"
 }
 
-# variable "azs" {
-#   type = list(string)
-#   default = ["ap-south-1a", "ap-south-1b"]
-#   description = "The availability zone in which to create the subnet."
-# }
-
 variable "env_tag" {
-  type = string
-  default = "dev"
+  type        = string
+  default     = "dev"
   description = "Tag for environment build"
 }
