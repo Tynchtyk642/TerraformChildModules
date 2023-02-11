@@ -33,8 +33,7 @@ resource "aws_subnet" "public_subnets" {
   cidr_block              = var.public_cidrs[count.index]
   map_public_ip_on_launch = true
   availability_zone = data.aws_availability_zones.available.names[count.index]
-  # availability_zone       = length(regexall("^[a-z]{2}-", element(var.azs, count.index))) > 0 ? element(var.azs, count.index) : null
-  # availability_zone_id    = length(regexall("^[a-z]{2}-", element(var.azs, count.index))) == 0 ? element(var.azs, count.index) : null
+ 
 
   tags = {
     Name = "public-subnet${var.prefix}-${count.index + 1}"
@@ -53,8 +52,7 @@ resource "aws_subnet" "private_subnets" {
   cidr_block              = var.private_cidrs[count.index]
   map_public_ip_on_launch = false
   availability_zone = data.aws_availability_zones.available.names[count.index]
-  # availability_zone       = length(regexall("^[a-z]{2}-", element(var.azs, count.index))) > 0 ? element(var.azs, count.index) : null
-  # availability_zone_id    = length(regexall("^[a-z]{2}-", element(var.azs, count.index))) == 0 ? element(var.azs, count.index) : null
+ 
 
   tags = {
     Name = "private-subnet-${var.prefix}-${count.index + 1}"
